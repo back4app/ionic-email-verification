@@ -23,7 +23,7 @@ export class MyApp {
       Parse.User.currentAsync().then(user => {
         console.log('Logged user', user);
 
-        this.rootPage = user ? 'HomePage' : 'LoginPage';
+        this.rootPage = user && user.get('emailVerified') ? 'HomePage' : 'LoginPage';
       }, err => {
         console.log('Error getting logged user');
 

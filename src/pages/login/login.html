@@ -19,13 +19,24 @@
     <ion-input type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
 
-  <div text-center margin-top>
-    <button ion-button margin-right (click)="signUp()">
+  <ion-item *ngIf="isSigningup">
+    <ion-label stacked>E-mail</ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+  <div text-center margin-top *ngIf="!isSigningup">
+    <button ion-button margin-right (click)="isSigningup = true">
       SIGN UP
     </button>
 
     <button ion-button color="secondary" (click)="signIn()">
       SIGN IN
+    </button>
+  </div>
+
+  <div text-center margin-top *ngIf="isSigningup">
+    <button ion-button (click)="signUp()">
+      SIGN UP
     </button>
   </div>
 </ion-content>
